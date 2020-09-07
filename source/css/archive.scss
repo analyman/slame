@@ -1,0 +1,19 @@
+/** archieve, category, tag list*/
+
+.group-title {
+    font-size: large;
+}
+
+.post-list {
+
+    .post-list-item {
+        .post-title {
+            font-size: medium;
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+    }
+}
+

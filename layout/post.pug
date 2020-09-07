@@ -12,10 +12,14 @@ block content
         != page.content
 
     div.content-prev-next
-        div.content-prev
-            if page.prev
+        if page.prev
+            div.content-prev
                 a(href=url_for(page.prev.path))= __("previous")
-        div.content-next
-            if page.next
+        else
+            div.position-holder
+        if page.next
+            div.content-next
                 a(href=url_for(page.next.path))= __("next")
+        else
+            div.position-holder
 

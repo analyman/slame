@@ -48,5 +48,5 @@ github:
 beian:
     enable: true
     link: https://beian.miit.gov.cn
-    icp: empty
+    icp: "000000000"
 

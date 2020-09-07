@@ -1,5 +1,11 @@
 /** colors */
 
 $bg-top-li: rgba(100, 150, 150, 0.3);
+$bg-top-li-focus: darken($bg-top-li, 20%);
+
+$bg-content: rgb(200, 220, 210);
+
 $fg-top-text: rgb(25, 50, 25);
+
+$bg-post: rgba(150, 150, 200, 0.7);
 

@@ -1,0 +1,24 @@
+/** post */
+
+.content-prev-next {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-top: 1.5em;
+    padding: 0.2em;
+
+    & > div {
+        & > a {
+            text-decoration: none;
+        }
+    }
+
+    .content-prev, .content-next {
+    }
+
+    .invisible {}
+}
+

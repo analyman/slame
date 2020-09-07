@@ -2,5 +2,5 @@ extends base
 
 block content
     div#tag-click
-    +group_with_name("tags", page.posts)
+    +group_with_name(__("tags") + " - " + page.tag, page.posts)
 

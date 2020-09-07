@@ -1,0 +1,47 @@
+/** sidebar */
+
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    margin: 0em 1em;
+
+    align-items: flex-start;
+
+    .sidebar-tags {
+        margin: 0em 0em 1em 0.0em;
+        padding: 0.5em;
+
+        .sidebar-tags-title {
+            font-size: large;
+            margin-bottom: 0.2em;
+        }
+
+        .sidebar-tags-items {
+            list-style: decimal;
+            li {
+                & > a {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .sidebar-categories {
+        padding: 0.5em;
+
+        .sidebar-categories-title {
+            font-size: large;
+            margin-bottom: 0.2em;
+        }
+
+        .sidebar-categories-items {
+            list-style: decimal;
+            li {
+                & > a {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

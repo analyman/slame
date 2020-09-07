@@ -2,5 +2,5 @@ extends base
 
 block content
     div#category-click
-    +group_with_name("categories", page.posts)
+    +group_with_name(__("categories") + " - " + page.category, page.posts)
 

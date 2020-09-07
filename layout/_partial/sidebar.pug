@@ -14,6 +14,6 @@ mixin sidebar_category(category)
 - var categories = site.categories
 div.sidebar-categories
     div.sidebar-categories-title= __("categories")
-    div.sidebar-tags-items
+    div.sidebar-categories-items
         for category in categories.toArray()
             +sidebar_category(category)

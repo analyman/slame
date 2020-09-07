@@ -1,1 +1,37 @@
 /** index page */
+@use './ucolor.scss' as ucolor;
+
+.post {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5em;
+    margin-bottom: 0.3em;
+
+    border-radius: 0.2em;
+    background-color: ucolor.$bg-post;
+
+    .post-title {
+        font-size: medium;
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .post-date {
+        font-size: small;
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .post-content {
+        margin: 0.2em 0em;
+    }
+
+    .post-readmore {
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
