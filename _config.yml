@@ -23,6 +23,9 @@ menu:
 js: js
 css: css
 
+render:
+  ts: source/js/tsconfig.json
+
 # mathjax
 mathjax:
     enable: true

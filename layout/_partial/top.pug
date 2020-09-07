@@ -1,11 +1,13 @@
-div.top-bar
-    li.top-home
-        a(href=url_for("/"))= __("home")
-    li.top-archive
-        a(href=url_for("/archives"))= __("archives")
-    li.top-github
-        a(href=url_for(theme.github.url))= __("github")
-    li.top-about
-        a(href=url_for("/about"))= __("about")
-include menu
-include navigation
+
+div.top
+    div.top-bar
+        li.top-home#home-button
+            a(href=url_for("/"))= __("home")
+        li.top-archive#archive-button
+            a(href=url_for("/archives"))= __("archives")
+        li.top-github#github-button
+            a(href=url_for(theme.github.url))= __("github")
+        li.top-about#about-button
+            a(href=url_for("/about"))= __("about")
+    include menu
+    include navigation

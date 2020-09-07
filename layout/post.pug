@@ -1,6 +1,7 @@
 extends base
 
 block content
+    div#post-click
     if page.tags && page.tags.length > 0
         .post-keywords
             for tag in page.tags.toArray()
