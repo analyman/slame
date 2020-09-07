@@ -1,0 +1,6 @@
+mixin group_with_name(name, posts)
+    h2.group-title= __(name)
+    ul.post-list
+        for post in posts.toArray()
+            +list_post(post)
+

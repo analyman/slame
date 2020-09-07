@@ -11,18 +11,12 @@ html(lang=config.language)
     include _partial/header
 
   body
+    include _partial/top
     .body_container
-      #header
-        .site-name
-          h1.hidden= current_title
-          a#logo(href=url_for('.'))= config.title
-          p.description= config.subtitle
-        #nav-menu
-            | here is menu
-      #layout.layout-g
-        .layout-l: .content_container
+      #content
           block content
-      a#totop(href='#top')
-      include _partial/footer
+      #sidebar
+          include _partial/sidebar
+    include _partial/footer
     include _partial/after_footer
-    block pageOnly
+

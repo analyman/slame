@@ -3,13 +3,11 @@ mixin post_router(post)
     h2.post-title
       a(href=url_for(post.path))
     p
-      if post.top
-        span= '【' + __('topped') + '】'
-      span.date= post.date.format(config.date_format)
+      span.date= post.date.format(config.date_format) + " "
       if post.categories.length > 0
-        span
+        span.categories
           for category in post.categories.toArray()
-            a.category(href=url_for(category.path))= category.name
+            a.category(href=url_for(category.path))= category.name + " "
     if post.description
       .post-content
         != post.description

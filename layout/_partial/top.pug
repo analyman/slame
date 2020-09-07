@@ -1,0 +1,11 @@
+div.top-bar
+    li.top-home
+        a(href=url_for("/"))= __("home")
+    li.top-archive
+        a(href=url_for("/archives"))= __("archives")
+    li.top-github
+        a(href=url_for(theme.github.url))= __("github")
+    li.top-about
+        a(href=url_for("/about"))= __("about")
+include menu
+include navigation

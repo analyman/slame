@@ -1,7 +1,2 @@
-extends base
-
-block content
-    - var posts = site.posts
-    for post in posts.toArray()
-        +post_router(post)
+extends post
 

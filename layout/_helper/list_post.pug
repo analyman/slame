@@ -1,0 +1,4 @@
+mixin list_post(post)
+  li.post-list-item
+    h2.post-title
+      a(href=url_for(post.path))= post.title

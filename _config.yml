@@ -23,7 +23,27 @@ menu:
 js: js
 css: css
 
+# mathjax
 mathjax:
     enable: true
-    cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
+    cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
+
+# github markdown css
+markdown_css:
+    enable: true
+    cdn: //cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css
+
+# highlight
+highlight:
+    enable: true
+    css_cdn: //cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css
+
+# github
+github:
+    url: https://github.com/
+
+beian:
+    enable: true
+    link: https://beian.miit.gov.cn
+    icp: empty
 

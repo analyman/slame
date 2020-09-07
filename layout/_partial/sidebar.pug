@@ -1,0 +1,19 @@
+mixin sidebar_tag(tag)
+    li
+        a(href=url_for(tag.path))= tag.name
+- var tags = site.tags
+div.sidebar-tags
+    div.sidebar-tags-title= __("tags")
+    div.sidebar-tags-items
+        for tag in tags.toArray()
+            +sidebar_tag(tag)
+
+mixin sidebar_category(category)
+    li
+        a(href=url_for(category.path))= category.name
+- var categories = site.categories
+div.sidebar-categories
+    div.sidebar-categories-title= __("categories")
+    div.sidebar-tags-items
+        for category in categories.toArray()
+            +sidebar_category(category)
