@@ -19,6 +19,7 @@
     "hexo-server": "^2.0.0",
     "sass": "^1.26.10",
     "tsify": "^5.0.2",
+    "typescript": "^4.0.2",
     "browserify": "^16.5.2"
   }
 }
