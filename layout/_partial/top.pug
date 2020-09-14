@@ -2,12 +2,20 @@
 div.top
     div.top-bar
         li.top-home#home-button
-            a(href=url_for("/"))= __("home")
+            a(href=url_for("/"))
+                i.fa.fa-home.icon
+                span.text= __("home")
         li.top-archive#archive-button
-            a(href=url_for("/archives"))= __("archives")
+            a(href=url_for("/archives"))
+                i.fa.fa-archive.icon
+                span.text= __("archive")
         li.top-github#github-button
-            a(href=url_for(theme.github.url))= __("github")
+            a(href=url_for(theme.github.url))
+                i.fab.fa-github.icon
+                span.text= __("github")
         li.top-about#about-button
-            a(href=url_for("/about"))= __("about")
+            a(href=url_for("/about"))
+                i.fa.fa-info.icon
+                span.text= __("about")
     include menu
     include navigation

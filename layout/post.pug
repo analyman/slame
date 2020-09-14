@@ -1,25 +1,34 @@
 extends base
 
 block content
-    div#post-click
-    if page.tags && page.tags.length > 0
-        .post-keywords
-            for tag in page.tags.toArray()
-                li
-                    a(href=url_for(tag.path))= tag.name
+    div.post-abstract
+        div.post-title= page.title
+        div#post-click.post-keywords-div
+            if page.tags && page.tags.length > 0
+                div.post-keywords-line
+                .post-keywords-title
+                    i.fas.fa-archway
+                    span.title= __("keywords")
+                .post-keywords
+                    for tag in page.tags.toArray()
+                        li
+                            a(href=url_for(tag.path))= tag.name
+            div.post-keywords-line
 
     .post-content.markdown-body
         != page.content
 
-    div.content-prev-next
-        if page.prev
-            div.content-prev
-                a(href=url_for(page.prev.path))= __("previous")
-        else
-            div.position-holder
-        if page.next
-            div.content-next
-                a(href=url_for(page.next.path))= __("next")
-        else
-            div.position-holder
+    if page.prev || page.next
+        div.prev-next-line
+        div.content-prev-next
+            if page.prev
+                div.content-prev
+                    a(href=url_for(page.prev.path))= __("previous")
+            else
+                div.position-holder
+            if page.next
+                div.content-next
+                    a(href=url_for(page.next.path))= __("next")
+            else
+                div.position-holder
 

@@ -41,6 +41,10 @@ highlight:
     enable: true
     css_cdn: //cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css
 
+# font awesome
+font_awesome:
+    cdn: //cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css
+
 # github
 github:
     url: https://github.com/

@@ -1,5 +1,6 @@
-/** slame theme for hexo ?? */
+/** slame theme for hexo */
 
+@use './fonts.scss';
 @use './archive.scss';
 @use './base.scss';
 @use './home.scss';
@@ -7,3 +8,4 @@
 @use './top.scss';
 @use './sidebar.scss';
 @use './footer.scss';
+

@@ -1,4 +1,63 @@
 /** post */
+@use './mixin.scss' as mixin;
+@use './ucolor.scss' as ucolor;
+
+.content {
+    padding: 0.8em 1em;
+    table .gutter {
+        display: none;
+    }
+
+    .post-abstract {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+        background-color: ucolor.$bg-abstract;
+        border-radius: 0.3em;
+        margin-bottom: 0.8em;
+
+        .post-title {
+            align-self: center;
+            font-size: large;
+            font-weight: bold;
+            font-family: rockwell;
+            margin-bottom: 0.5em;
+        }
+
+        .post-keywords-title {
+            @include mixin.no-select;
+            font-size: large;
+            font-family: fantasy;
+            span {
+                margin-left: 0.5em;
+            }
+        }
+
+        .post-keywords {
+            margin: 0.2em 0.4em 0em 0.4em;
+            padding: 0.5em;
+
+            a, a:visited {
+                text-decoration: none;
+                color: black;
+            }
+        }
+    }
+    
+    .post-keywords-line {
+        width: 100%;
+        height: 1.5pt;
+        background-color: black;
+        margin: 0.3em 0em;
+    }
+}
+
+.prev-next-line {
+    width: 100%;
+    height: 1.5pt;
+    margin: 1.8em 0em 0.5em 0em;
+    background-color: black;
+}
 
 .content-prev-next {
     width: 100%;
@@ -6,17 +65,21 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-
-    margin-top: 1.5em;
+    box-sizing: border-box;
     padding: 0.2em;
 
     & > div {
         & > a {
             text-decoration: none;
         }
+
+        & > a, & > a:visited {
+            color: rgb(100, 100, 150);
+        }
     }
 
     .content-prev, .content-next {
+        margin: 0.2em 0.8em;
     }
 
     .invisible {}

@@ -1,11 +1,15 @@
 mixin post_router(post)
   .post
     div.post-title
+      i.far.fa-hand-point-right
       a(href=url_for(post.path))= post.title
     div.post-date
-      span.date= post.date.format(config.date_format) + " "
+      span.date
+        i.far.fa-calendar-alt
+        span= post.date.format(config.date_format)
       if post.categories.length > 0
         span.categories
+          i.fas.fa-tag
           for category in post.categories.toArray()
             a.category(href=url_for(category.path))= category.name + " "
     if post.description

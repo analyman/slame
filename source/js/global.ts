@@ -14,3 +14,10 @@ export const archive_button = document.getElementById("archive-button");
 export const github_button  = document.getElementById("github-button");
 export const about_button   = document.getElementById("about-button");
 
+/** general elements */
+export const tags_button     = document.getElementById("sidebar-tags-elem");
+export const category_button = document.getElementById("sidebar-categories-elem");
+
+/** goto top */
+export const goto_top = document.getElementById("goto-top-elem");
+

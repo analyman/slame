@@ -1,32 +1,90 @@
 /** base layout */
 @use './ucolor.scss' as ucolor;
+@use './dimens.scss' as dimens;
 
 body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     align-content: space-around;
+    margin: 0px;
 
     & > div {
         width: 100%;
     }
 
-    & > .body-container {
-        background-color: ucolor.$bg-content;
-        margin-left: 2em;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
+    min-height: 100%;
+}
+
+/** default layout (desktop) */
+.body-container {
+    background-color: ucolor.$bg-container;
+
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: dimens.$main-margin-width;
+    padding-right: dimens.$main-margin-width;
+
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+
+    .content {
+        order: 1;
         box-sizing: border-box;
-        padding: 0.3em 0.7em;
+        width: 80%;
+        min-height: 80vh;
+    }
+    .sidebar {
+        order: 2;
+        box-sizing: border-box;
+        width: 20%;
+    }
+
+    .content, .sidebar {
+        background-color: ucolor.$bg-content-sidebar;
+    }
+}
+
+/** adjust margin width */
+@media (max-width: dimens.$window-width-c) {
+    .body-container {
+        padding-left: dimens.$main-margin-width-c;
+        padding-right: dimens.$main-margin-width-c;
+    }
+}
+@media (max-width: dimens.$window-width-b) {
+    .body-container {
+        padding-left: dimens.$main-margin-width-b;
+        padding-right: dimens.$main-margin-width-b;
+    }
+}
+@media (max-width: dimens.$window-width-a) {
+    .body-container {
+        padding-left: dimens.$main-margin-width-a;
+        padding-right: dimens.$main-margin-width-a;
+    }
+}
+
+/** telephone layout */
+@media (max-width: dimens.$max-telephone-width) {
+    .body-container {
+        padding-left: 1em;
+        padding-right: 1em;
+
+
+        flex-direction: column;
 
         .content {
-            box-sizing: border-box;
-            width: 80%;
+            order: 2;
+            width: 100%;
+            min-height: 60vh;
         }
+
         .sidebar {
-            box-sizing: border-box;
-            width: 20%;
+            order: 1;
+            width: 100%;
         }
     }
 }
+

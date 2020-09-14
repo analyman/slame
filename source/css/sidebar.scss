@@ -1,47 +1,84 @@
 /** sidebar */
+@use './dimens.scss' as dimens;
+@use './mixin.scss' as mixin;
+@use './ucolor.scss' as ucolor;
 
 
+/** default layout (desktop) */
 .sidebar {
     display: flex;
     flex-direction: column;
-    margin: 0em 1em;
+    margin: 0em 0em 0em 1em;
+    padding: 0.8em;
 
     align-items: flex-start;
 
-    .sidebar-tags {
-        margin: 0em 0em 1em 0.0em;
+    .sidebar-common {
+        order: 1;
+        margin: 0em;
         padding: 0.5em;
 
-        .sidebar-tags-title {
+        .sidebar-common-title {
+            @include mixin.no-select;
+            @include mixin.just-one-line;
             font-size: large;
             margin-bottom: 0.2em;
+            padding: 0.15em;
         }
 
-        .sidebar-tags-items {
+        .sidebar-common-items {
+            padding-left: 0.8em;
             list-style: decimal;
+            font-size: medium;
+            font-family: constantia;
             li {
                 & > a {
                     text-decoration: none;
+                    color: ucolor.$fg-url;
                 }
             }
         }
+
+        .show {
+            display: none;
+        }
+        .hide {
+            display: inline;
+        }
+        .click-show {
+            .show {
+                display: inline;
+            }
+            .hide {
+                display: none;
+            }
+        }
+
+        .sidebar-common-items {
+            display: none;
+        }
+        .click-show + .sidebar-common-items {
+            display: block;
+        }
+    }
+
+    .sidebar-tags {
+        order: 1;
+        margin: 0em 0em 1em 0.0em;
     }
 
     .sidebar-categories {
-        padding: 0.5em;
+        order: 2;
+    }
+}
 
-        .sidebar-categories-title {
-            font-size: large;
-            margin-bottom: 0.2em;
+@media (max-width: dimens.$max-telephone-width) {
+    .sidebar {
+        margin: 0em 0em 1em 0em;
+        .sidebar-tags {
         }
-
-        .sidebar-categories-items {
-            list-style: decimal;
-            li {
-                & > a {
-                    text-decoration: none;
-                }
-            }
+        .sidebar-categories {
         }
     }
 }
+

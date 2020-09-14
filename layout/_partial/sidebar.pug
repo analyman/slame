@@ -2,9 +2,13 @@ mixin sidebar_tag(tag)
     li
         a(href=url_for(tag.path))= tag.name
 - var tags = site.tags
-div.sidebar-tags
-    div.sidebar-tags-title= __("tags")
-    div.sidebar-tags-items
+div.sidebar-tags.sidebar-common
+    div.sidebar-tags-title.sidebar-common-title#sidebar-tags-elem
+        i.fas.fa-tags
+        span= " " + __("tags") + " "
+        i.fas.fa-angle-right.hide
+        i.fas.fa-angle-down.show
+    div.sidebar-tags-items.sidebar-common-items
         for tag in tags.toArray()
             +sidebar_tag(tag)
 
@@ -12,8 +16,12 @@ mixin sidebar_category(category)
     li
         a(href=url_for(category.path))= category.name
 - var categories = site.categories
-div.sidebar-categories
-    div.sidebar-categories-title= __("categories")
-    div.sidebar-categories-items
+div.sidebar-categories.sidebar-common
+    div.sidebar-categories-title.sidebar-common-title#sidebar-categories-elem
+        i.fas.fa-bars
+        span= " " + __("categories") + " "
+        i.fas.fa-angle-right.hide
+        i.fas.fa-angle-down.show
+    div.sidebar-categories-items.sidebar-common-items
         for category in categories.toArray()
             +sidebar_category(category)
