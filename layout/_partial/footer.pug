@@ -1,6 +1,6 @@
 
 .footer-container
-    if theme.beian.enable
+    if config.beian && config.beian.enable
         .beian
-            a(href=theme.beian.link)= theme.beian.icp
+            a(href=config.beian.link)= config.beian.icp
 

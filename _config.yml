@@ -49,8 +49,9 @@ font_awesome:
 github:
     url: https://github.com/
 
-beian:
-    enable: true
-    link: https://beian.miit.gov.cn
-    icp: "000000000"
+# move beian to config
+# beian:
+#   enable: <boolean>
+#   link: <url>
+#   icp:  <string>
 
