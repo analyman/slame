@@ -1,5 +1,8 @@
 extends base
 
+block extra_header
+    title= __("tags") + " - " + page.tag
+
 block content
     div#tag-click
     +group_with_name(__("tags") + " - " + page.tag, page.posts)

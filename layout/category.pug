@@ -1,5 +1,8 @@
 extends base
 
+block extra_header
+    title= __("categories") + " - " + page.category
+
 block content
     div#category-click
     +group_with_name(__("categories") + " - " + page.category, page.posts)

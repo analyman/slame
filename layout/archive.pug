@@ -1,5 +1,8 @@
 extends base
 
+block extra_header
+    title= __("archive")
+
 block content
     div#archives-click
     +group_with_name("archives", page.posts)
