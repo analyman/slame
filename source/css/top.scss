@@ -1,10 +1,12 @@
 /** top bar styles */
 @use './ucolor.scss' as ucolor;
+@use './mixin.scss' as mixin;
 
 .top {
 }
 
 .top-bar {
+    @include mixin.no-select;
     display: flex;
     flex-direction: row;
 

@@ -31,6 +31,10 @@ mathjax:
     enable: true
     cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
 
+# tikzjax
+tikzjax:
+    enable: true
+
 # github markdown css
 markdown_css:
     enable: true
@@ -45,9 +49,9 @@ highlight:
 font_awesome:
     cdn: //cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css
 
-# github
-github:
-    url: https://github.com/
+# move github to config
+# github:
+#    url: https://github.com/
 
 # move beian to config
 # beian:

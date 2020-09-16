@@ -16,6 +16,10 @@ if theme.highlight.enable
 link(rel='stylesheet', type='text/css', href=url_for(theme.font_awesome.cdn))
 link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/slame.css')
 
+if theme.tikzjax.enable
+  link(rel="stylesheet", type="text/css", href="/js/tikzjax/fonts.css")
+  script(type="text/javascript", src=url_for("/js/tikzjax/tikzjax.js"))
+
 link(rel='shortcut icon', href=url_for('favicon.ico'))
 link(rel="bookmark", href=url_for('favicon.ico'))
 link(rel='apple-touch-icon', href=url_for('apple-touch-icon.png'))
