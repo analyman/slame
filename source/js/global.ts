@@ -21,3 +21,7 @@ export const category_button = document.getElementById("sidebar-categories-elem"
 /** goto top */
 export const goto_top = document.getElementById("goto-top-elem");
 
+/** toc container */
+export const toc_container = document.getElementById("post-toc");
+export const toc_switcher = document.getElementById("post-toc-switcher");
+

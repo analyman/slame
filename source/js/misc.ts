@@ -20,28 +20,12 @@ export function do_misc() {
         });
     });
 
-    let goto_top_showed: boolean = false;
-    let goto_top_timeout: number = 0;
-    function hide_goto_top() {
-        gl.goto_top.classList.add("hide");
-        goto_top_showed = false;
-        goto_top_timeout = 0;
-    }
-    function show_goto_top() {
-        if(!goto_top_showed) {
-            gl.goto_top.classList.remove("hide");
-            goto_top_showed = true;
-        } else {
-            window.clearTimeout(goto_top_timeout);
-        }
-        goto_top_timeout = window.setTimeout(hide_goto_top, 3000);
-    }
-
     /** goto top handler */
     utils.register_function_call(() => {
-        show_goto_top();
-        document.addEventListener("scroll", (ev: Event) => {
-            show_goto_top();
+        utils.timeout_add_class(gl.goto_top, "hide", true, 3000, (e, func) => {
+            document.addEventListener("scroll", (ev: Event) => {
+                func()
+            });
         });
     });
 }

@@ -45,3 +45,51 @@ export function call_register_functions() {
     }
 }
 
+type howtocall = (elem: HTMLElement, add_func: () => void) => void;
+/** when the timer expires just remove the class */
+export function timeout_remove_class(elem: HTMLElement, has: boolean, 
+                                     cls: string, time_ms: number, 
+                                     when: howtocall) {
+    let added: boolean = has;
+    let timeout: number = 0;
+    function _remove() {
+        elem.classList.remove(cls);
+        added = false;
+        timeout = 0;
+    }
+    function _add() {
+        if(!added) {
+            elem.classList.add(cls);
+            added = true;
+        } else {
+            window.clearTimeout(timeout);
+        }
+        timeout = window.setTimeout(_remove, time_ms);
+    }
+
+    when(elem, _add);
+}
+
+/** when the timer expires jsut add the class */
+export function timeout_add_class(elem: HTMLElement, cls: string, has: boolean, 
+                                  time_ms: number, when: howtocall) {
+    let added: boolean = has;
+    let timeout: number = 0;
+    function _add() {
+        elem.classList.add(cls);
+        added = true;
+        timeout = 0;
+    }
+    function _remove() {
+        if(added) {
+            elem.classList.remove(cls);
+            added = false;
+        } else {
+            window.clearTimeout(timeout);
+        }
+        timeout = window.setTimeout(_add, time_ms);
+    }
+
+    when(elem, _remove);
+}
+

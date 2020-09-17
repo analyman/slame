@@ -1,0 +1,116 @@
+/** toc styles */
+@use './ucolor.scss' as ucolor;
+@use './mixin.scss' as mixin;
+@use './dimens.scss' as dimens;
+
+#post-toc {
+    position: fixed;
+    padding: 1em;
+    background-color: ucolor.$bg-toc;
+    box-sizing: border-box;
+    font-family: rockwell;
+
+    .toc-name {
+        text-align: center;
+        font-size: larger;
+        margin-bottom: 0.8em;
+        color: ucolor.$fg-toc-name;
+    }
+
+    /** default layout */
+    min-width: 28%;
+    min-height: 60%;
+    left: 0em;
+    top: 20%;
+    border-radius: 0em 1em 1em 0em;
+
+    /** telephone */
+    @media (max-width: dimens.$max-telephone-width) {
+        & {
+            width: 80%;
+            min-height: 50%;
+            left: 10%;
+            top: 0em;
+            border-radius: 0em 0em 1em 1em;
+        }
+    }
+
+    a {
+        @include mixin.basic-url;
+    }
+
+    .toc-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .toc-controller {
+            @include mixin.no-select;
+
+            & > .toc-hide {
+                display: none;
+            }
+            &.hide-the-toc {
+                .toc-hide {
+                    display: inline;
+                }
+                .toc-show {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .toc-number {
+        margin-right: 0.2em;
+    }
+    .toc-number:after{
+        content: '.';
+    }
+
+    .toc-title + .toc-children {
+        margin-left: 1em;
+    }
+
+    .toc-children-hide {
+        display: none;
+    }
+
+    &.hide-toc {
+        display: none;
+    }
+}
+
+#post-toc-switcher {
+    position: fixed;
+    left: -0.85em;
+    bottom: 50%;
+    width: 2em;
+    height: 2em;
+
+    border-radius: 1em;
+    background-image: radial-gradient(transparent, rgb(150, 150, 150));
+    background-color: ucolor.$google-blue;
+
+    @media (max-width: dimens.$max-telephone-width) {
+        & {
+            left: 48%;
+            width: 2em;
+            height: 2em;
+            bottom: -0.9em;
+        }
+    }
+}
+
+#post-toc-switcher.hide {
+    display: none;
+
+    &:hover {
+        display: block;
+    }
+}
+
+#post-toc.toc-in-show + #post-toc-switcher {
+    display: none !IMPORTANT;
+}
+

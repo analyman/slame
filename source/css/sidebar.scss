@@ -33,8 +33,7 @@
             font-family: constantia;
             li {
                 & > a {
-                    text-decoration: none;
-                    color: ucolor.$fg-url;
+                    @include mixin.basic-url;
                 }
             }
         }
