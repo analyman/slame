@@ -93,3 +93,10 @@ export function timeout_add_class(elem: HTMLElement, cls: string, has: boolean,
     when(elem, _remove);
 }
 
+export function text2html(str: string): HTMLElement 
+{
+    let div = document.createElement("div");
+    div.innerHTML = str.trim();
+    return div.firstChild as HTMLElement;
+}
+
