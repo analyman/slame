@@ -1,4 +1,5 @@
 import * as utils from './utils';
+import { assert_expr } from './utils';
 import * as gl from './global';
 
 /** fold section */
@@ -7,6 +8,7 @@ import * as gl from './global';
 
 /** TODO */
 const save_sym = "sub_elements";
+const parent_sym = "parent_head";
 
 const fold_expr = `<span class='fold-button'>
                        <i class='fas fa-angle-down show'></i>
@@ -15,10 +17,16 @@ const fold_expr = `<span class='fold-button'>
 const valid_tag = /[hH]([123456])/;
 const hide_elem = "--hide--";
 let markdown_body_children = [];
+let show_all = null;
+let hide_all = null;
+let show_a_elem = null;
 function insert_fold_button_to_h(elem: HTMLElement)
 {
     const all_h: HTMLElement[] = [];
     markdown_body_children = [];
+    show_all = null;
+    hide_all = null;
+    show_a_elem = null;
     function get_level_by_tag(tag: string) {
         let m = tag.match(valid_tag);
         if(m == null) return 7;
@@ -44,6 +52,8 @@ function insert_fold_button_to_h(elem: HTMLElement)
             x[save_sym] = x[save_sym] || [];
             x[save_sym].push(c);
         }
+        if(s.length > 0)
+            c[parent_sym] = s[s.length - 1];
         if(m) {
             all_h.push(c as HTMLElement);
             s.push(c as HTMLElement);
@@ -73,6 +83,25 @@ function insert_fold_button_to_h(elem: HTMLElement)
                 c.removeChild(bt);
         }
     }
+    function show_all__() {
+        for(let bb of all_h)
+            show__(bb);
+    }
+    function hide_all__() {
+        for(let bb of all_h)
+            hide__(bb);
+    }
+    function show_a_elem__(elem: HTMLElement) {
+        let idx = all_h.indexOf(elem);
+        if(idx < 0) return;
+        while(elem != null) {
+            show__(elem);
+            elem = elem[parent_sym];
+        }
+    }
+    show_all = show_all__;
+    hide_all = hide_all__;
+    show_a_elem = show_a_elem__;
 
     for(let button of all_h) {
         if(Array.isArray(button[save_sym]) && button[save_sym].length > 0)
@@ -126,6 +155,17 @@ let unins = null;
 export function refresh() {
     unins && unins();
     unins = ins();
+}
+
+export function hideAll() {
+    if(hide_all) hide_all();
+}
+export function showAll() {
+    if(show_all) show_all();
+}
+export function show(elem: HTMLElement) {
+    assert_expr(elem && elem.tagName && valid_tag.test(elem.tagName));
+    if(show_a_elem) show_a_elem(elem);
 }
 
 export function do_fold() {

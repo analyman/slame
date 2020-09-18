@@ -1,6 +1,7 @@
 import * as utils from './utils'
 import * as gl from './global'
 import { assert_expr } from './utils'
+import * as fold from './fold'
 
 /** generate Table of Contents base on <h?> tags */
 
@@ -70,8 +71,9 @@ function try_toc(stack: TOCEntry[], pred: TocEntryPredicate, level: getEntryLeve
                  elem: HTMLElement, child: boolean) {
     if(pred(elem)) {
         let l = level(elem);
-        if(l <= stack[stack.length - 1].level())
+        while(stack.length > 0 && l <= stack[stack.length - 1].level())
             stack.pop();
+        assert_expr(stack.length > 0);
         let n = elem.innerText;
         let attr_id = elem.attributes['id'];
         let link = "#" + (attr_id ? attr_id.value : '');
@@ -132,7 +134,8 @@ export function do_toc() {
     if(!gl.in_post_section) return;
 
     utils.register_function_call(() => {
-        let toc_html = getTOC().generateHtml();
+        let toc = getTOC();
+        let toc_html = toc.generateHtml();
         let toc_container = gl.toc_container;
         assert_expr(toc_container != null);
         toc_container.innerHTML = _toc_ + toc_html;
@@ -148,6 +151,23 @@ export function do_toc() {
                 ev.stopPropagation();
                 ev.preventDefault();
             });
+        }
+
+        function reg_show_the_(elem: HTMLElement, head_id: string) {
+            elem.addEventListener("click", (ev) => {
+                for(let i=1;i<=6;i++) {
+                    let f = document.querySelector(`h${i}[id='${head_id}']`) as HTMLElement;
+                    if(f == null) continue;
+                    fold.show(f);
+                    return;
+                }
+            })
+        }
+        let links = toc_container.querySelectorAll(".toc-title a");
+        for(let i=0;i<links.length;i++) {
+            let link = links[i] as HTMLElement;
+            let tag = link.attributes["href"].value.substr(1);
+            reg_show_the_(link, tag);
         }
 
         /** hide toc */
