@@ -62,9 +62,20 @@ function insert_fold_button_to_h(elem: HTMLElement)
 
     function show__(elem: HTMLElement) {
         elem.classList.remove("hide");
+        let head: [HTMLElement, boolean][] = [];
         if (elem[save_sym] != null) {
-            for(let xyz of elem[save_sym])
+            for(let xyz of elem[save_sym]) {
+                let is_head = valid_tag.test(xyz.tagName);
+                if (is_head) {
+                    let show = !xyz.classList.contains("hide");
+                    head.push([xyz, show]);
+                }
                 xyz.classList.remove(hide_elem);
+            }
+        }
+        for(let [elem, show] of head) {
+            if (show) show__(elem);
+            else      hide__(elem);
         }
     }
     function hide__(elem: HTMLElement) {
