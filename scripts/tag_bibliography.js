@@ -1,23 +1,6 @@
 /** bibliography generator
  * [authors, ...], title, publisher, year */
-
-function good_the_string(str) {
-    let k = "";
-    str = str.trim();
-    str = str.replace(/"/g, '\\"');
-    str = str.replace(/^([^[{])/g, '"$1');
-    str = str.replace(/([^\]}])$/g, '$1"');
-
-    str = str.replace(/([[{]) */g, '$1');
-    str = str.replace(/ *([\]}])/g, '$1');
-
-    str = str.replace(/([[{])([^[{])/g, '$1"$2');
-    str = str.replace(/([^\]}])([\]}])/g, '$1"$2');
-    str = str.replace(/ *, */g, ',');
-    str = str.replace(/,([^[{])/g, ',"$1');
-    str = str.replace(/([^\]}]),/g, '$1",');
-    return str;
-}
+const utils = require('./utils');
 
 const biblio = (args, content) => {
     if (content.trim().length == 0)
@@ -36,7 +19,7 @@ const biblio = (args, content) => {
         if(bib.length == 0 || bib[0] == '#') continue;
 
         let vv = [];
-        let x = '[' + good_the_string(bib) + ']';
+        let x = '[' + utils.goodString(bib) + ']';
         try {
             vv = eval(x);
         } catch (err) {

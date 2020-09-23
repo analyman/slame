@@ -1,0 +1,27 @@
+/** style for slame-image script */
+
+.slame-images {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .slame-image {
+        margin-top: 0.2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .slame-image-slot {
+        }
+        .slame-image-description {
+            margin-bottom: 0.8em;
+            padding: 0.1em 0.8em;
+
+            .slame-image-figure-number {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
