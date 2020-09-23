@@ -32,9 +32,11 @@ const biblio = (args, content) => {
     let biblios = content.split('\n');
     let i = 1;
     for (let bib of biblios) {
+        bib = bib.trim();
+        if(bib.length == 0 || bib[0] == '#') continue;
+
         let vv = [];
         let x = '[' + good_the_string(bib) + ']';
-        console.log(x);
         try {
             vv = eval(x);
         } catch (err) {
@@ -71,6 +73,7 @@ const biblio = (args, content) => {
             ret += "<span class='year'>" + vv[3] + "</span>";
 
         ret += "</div>";
+        i++;
     }
     ret += "</div></div>"
     return ret;

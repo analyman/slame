@@ -20,6 +20,14 @@ let markdown_body_children = [];
 let show_all = null;
 let hide_all = null;
 let show_a_elem = null;
+
+function ignored_element(elem) {
+    /** skip bibliography */
+    if(elem.classList.contains("bibliography")) return true;
+
+    return false;
+}
+
 function insert_fold_button_to_h(elem: HTMLElement)
 {
     const all_h: HTMLElement[] = [];
@@ -36,6 +44,10 @@ function insert_fold_button_to_h(elem: HTMLElement)
     let s: HTMLElement[] = [];
     for(let i=0;i<elem.children.length;i++) {
         let c = elem.children[i];
+
+        /** skip elements */
+        if(ignored_element(c)) continue;
+
         markdown_body_children.push(c);
         let m = c.tagName.match(valid_tag);
         /** skip unnecessary elements */
@@ -60,11 +72,11 @@ function insert_fold_button_to_h(elem: HTMLElement)
         }
     }
 
-    function show__(elem: HTMLElement) {
-        elem.classList.remove("hide");
+    function show__(elem__: HTMLElement) {
+        elem__.classList.remove("hide");
         let head: [HTMLElement, boolean][] = [];
-        if (elem[save_sym] != null) {
-            for(let xyz of elem[save_sym]) {
+        if (elem__[save_sym] != null) {
+            for(let xyz of elem__[save_sym]) {
                 let is_head = valid_tag.test(xyz.tagName);
                 if (is_head) {
                     let show = !xyz.classList.contains("hide");
@@ -73,15 +85,15 @@ function insert_fold_button_to_h(elem: HTMLElement)
                 xyz.classList.remove(hide_elem);
             }
         }
-        for(let [elem, show] of head) {
-            if (show) show__(elem);
-            else      hide__(elem);
+        for(let [e, show] of head) {
+            if (show) show__(e);
+            else      hide__(e);
         }
     }
-    function hide__(elem: HTMLElement) {
-        elem.classList.add("hide");
-        if (elem[save_sym] != null) {
-            for(let xyz of elem[save_sym])
+    function hide__(elem__: HTMLElement) {
+        elem__.classList.add("hide");
+        if (elem__[save_sym] != null) {
+            for(let xyz of elem__[save_sym])
                 xyz.classList.add(hide_elem);
         }
     }
@@ -145,11 +157,17 @@ function need_update(): boolean {
         console.error("bad selector");
         return false;
     }
-    if(m.children.length != markdown_body_children.length) return true;
+    if(m.children.length < markdown_body_children.length) return true;
+    let j=0;
     for(let i=0;i<markdown_body_children.length;i++) {
-        if(m.children[i] != markdown_body_children[i])
+        /** skip ignored elements */
+        if(ignored_element(m.children[i])) continue;
+
+        if(m.children[i] != markdown_body_children[j])
             return true;
+        j++;
     }
+    if(j != markdown_body_children.length) return true;
     return false;
 }
 
